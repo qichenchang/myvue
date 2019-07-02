@@ -1,28 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header></Header>
+    <router-view></router-view>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  import Header from './components/Header';
+  import Footer from './components/Footer';
+  // import axios from './plugins/axios'
+
+  export default {
+    name: 'app',
+    components:{
+      Header,Footer
+    },
+
+  created(){
+    //测试axios
+    // console.log(1,this.$axios)
+    // console.log(2,axios)
+    // axios({
+    //   // url:'http://localhost:3000/api/banner'
+    //   // url:'https://uncle9.top/api/banner'
+    //   // url:'/api/banner'
+    //   // url:'/douban/v2/movie/top250?start=0&count=1'
+    // }).then(
+    //   res=>console.log(res.data)
+    // ) 
   }
-}
+  }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
 </style>
