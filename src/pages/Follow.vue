@@ -18,7 +18,7 @@ export default {
     },
     mounted(){
         axios({
-            url:'/api/follow',
+            url:'http://rap2api.taobao.org/app/mock/223502/cqc',
             params:{_page:1,_limit:6}
         }).then(
             res=>this.list=res.data.data

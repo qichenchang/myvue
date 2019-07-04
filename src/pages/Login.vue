@@ -43,6 +43,7 @@ export default {
     login(){
       axios({
         url:'/api/login',
+        method:'post',
         data:{username:this.username,password:this.password,save:true}
       }).then(
         res=>{

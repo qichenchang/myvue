@@ -1,7 +1,7 @@
 body{ background:#f2f4f5;}
 
 .content{max-width:6.4rem; margin:0 auto; margin-bottom:0.8rem;}
-.content .header{width:6.4rem;height:2.84rem; background:#9e9a95; padding-top:0.4rem;}
+.content .header{width:6.4rem;height:3.5rem; background:#9e9a95;}
 .header h2{width:1.02rem;height:1.02rem; border-radius:50%; margin:0 auto;}
 .header h2 img{width:100%;}
 .header .user-box{width:1.14rem; font-size:0.25rem; color:#fff; margin:0 auto; margin-top:0.2rem;}

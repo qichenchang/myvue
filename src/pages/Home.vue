@@ -19,11 +19,13 @@
             Swiper,List
         },
         mounted(){
-            axios({
-                url:'/api/home',
-                params:{_page:1,_limit:10}
-            }).then(
-                res=>this.list=res.data.data
+            axios(
+                'http://rap2api.taobao.org/app/mock/223502/cqc'
+            ).then(
+                res=> {
+                    console.log(res.data.cqc)
+                    this.list=res.data.cqc
+                }
             )
         }
     }

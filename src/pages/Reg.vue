@@ -13,21 +13,52 @@
     </div>
     <ul>
       <li class="lifirst">
-        <input type="text" value=""/>
+        <input type="text" v-model="username">
         <span>帐号</span>
       </li>
       <li>
-        <input type="text" value=""/>
+        <input type="text" v-model="password">
         <span>密码</span>
       </li>
     </ul>
     <div class="footbox">
-      <input type="button" value="注 册" class="login-btn"/>
+      <input type="button" value="注 册" class="login-btn" @click="reg"/>
       <a href="javascript:;" class="tishi">忘记密码？</a>
     </div>
   </div>
 </template>
-<style scoped>
+<script>
+export default {
+  data(){
+    return {
+      username:'',
+      password:'',
+      mess:''
+    }
+  },
+  methods:{
+    reg(){
+      axios({
+        url:'/api/reg',
+        method:'post',
+        data:{username:this.username,password:this.password}
+      }).then(
+        res=>{
+          if(res.data.err===0){
+            console.log(res.data)
+            this.$router.push('/login')
+          }else{
+            console.log(res.data)
+            this.mess = res.data.mess
+          }
+        }
+      )
+    }
+  }
+}
+</script>
+
+<style  scoped>
   body{ background:#f2f4f5;}
   .content{max-width:6.4rem; margin:0 auto;}
   .content .fhbtn{ padding-top:0.27rem;}

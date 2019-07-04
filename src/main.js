@@ -18,6 +18,10 @@ import axios from './plugins/axios'
 Vue.prototype.baseUrl = require('../config/config').active
 
 new Vue({
+  data:{
+    bNav:false,
+    bFoot:false,
+  },
   render: h => h(App),
   router,axios
 

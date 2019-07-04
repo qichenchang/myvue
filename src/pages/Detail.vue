@@ -5,13 +5,13 @@
         <li class="l-btn" @click="goback"></li>
       </ul>
     </div>
-    <div v-if="detail.detail" class="content">
+    <div v-if="detail" class="content">
       <!-- ../assets/img/head.png -->
-      <div class="header clear"><h2><img :src=" baseUrl + detail.detail.auth_icon" alt=""/></h2><p>{{ detail.detail && detail.detail.auth}}</p></div>
+      <div class="header clear"><h2><img :src="detail.auth_icon" alt=""/></h2><p>{{ detail && detail.auth}}--{{detail.id}}</p></div>
       <div class="cont">
         <h3>{{detail.title}}</h3>
         <div class="time"><p>{{detail.time}} <span><img src="../assets/img/zan.png" alt=""/></span></p></div>
-        <div class="text-box" v-html="detail.detail.content"></div>
+        <div class="text-box" v-html="detail.content"></div>
       </div>
     </div>
     <div class="foot-btn">
@@ -45,12 +45,22 @@ export default {
   },
   mounted(){
     let id = this.$route.params.aid
-    let dataName = this.$route.query.dataName
+    // let dataName = this.$route.query.dataName
+    console.log(id)
     axios({
-      url:`/api/${dataName}/${id}`,
-      params:{_page:1,_limit:10}
+      url:'http://rap2api.taobao.org/app/mock/223502/cqc',
+      // url:`/api/${dataName}/${id}`,
+      // params:{_page:1,_limit:10}
     }).then(
-      res=>this.detail = res.data.data
+      res=> {
+        console.log(res.data)
+        console.log(res.data.cqc)
+        // console.log(res.data.cqc.id)
+        // console.log(res.data.cqc.auth_icon)
+        this.detail=res.data.cqc[id-1]
+        console.log(this.detail)
+
+      }
     )
   }
 }

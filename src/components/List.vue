@@ -3,11 +3,10 @@
     <ul>
       <li
       v-for="(item,index) of list"
-      :key="item._id"
+      :key="item.id"
       >
-        <router-link :to="{name:'detail',params:{aid:item._id},query:{dataName:dataName}}">
-          <h2>{{index+1}}.{{item.title}}</h2>
-          <p>{{item.des}}</p>
+        <router-link :to="{name:'detail',params:{aid:item.id}}">
+          <h2>{{index+1}}.{{item.name}}</h2>
         </router-link>
       </li>
     </ul>

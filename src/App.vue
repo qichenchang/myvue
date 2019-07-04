@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <Header v-show="$root.$data.bNav"></Header>
     <router-view></router-view>
-    <Footer></Footer>
+    <Footer v-show="$root.$data.bFoot"></Footer>
   </div>
 </template>
 
@@ -17,20 +17,29 @@
     components:{
       Header,Footer
     },
+    watch:{
+      $route:{//路由监听-》数据观测
+        handler(to){
+          let path = to.path;
+          console.log(path)
 
-  created(){
-    //测试axios
-    // console.log(1,this.$axios)
-    // console.log(2,axios)
-    // axios({
-    //   // url:'http://localhost:3000/api/banner'
-    //   // url:'https://uncle9.top/api/banner'
-    //   // url:'/api/banner'
-    //   // url:'/douban/v2/movie/top250?start=0&count=1'
-    // }).then(
-    //   res=>console.log(res.data)
-    // ) 
-  }
+          if(/home|follow|column/.test(path)){
+            this.$root.$data.bNav=true;
+            this.$root.$data.bFoot=true;
+          }
+          if(/detail|login|reg/.test(path)){
+            this.$root.$data.bNav=false;
+            this.$root.$data.bFoot=false;
+          }
+          if(/user/.test(path)){
+            this.$root.$data.bNav=false;
+            this.$root.$data.bFoot=true;
+          }
+
+        },
+        immediate:true
+      }
+    }
   }
 </script>
 
